@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filament Rekenmachine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+    input, button {
+      margin: 8px 0;
+      padding: 8px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div id="login" class="container">
+  <h2>Voer wachtwoord in</h2>
+  <input type="password" id="password" placeholder="Wachtwoord">
+  <button onclick="checkPassword()">Inloggen</button>
+  <p id="error" style="color:red;"></p>
+</div>
+
+<div id="calculator" class="container" style="display:none;">
+  <h2>Filament Rekenmachine</h2>
+  <input type="number" id="gram" placeholder="Gram (g)">
+  <input type="number" id="rolPrijs" placeholder="Rol prijs (€)">
+  <input type="number" id="rolGewicht" placeholder="Gewicht rol (g)">
+  <button onclick="berekenKosten()">Bereken</button>
+  <h3 id="resultaat"></h3>
+</div>
+
+<script>
+  function checkPassword() {
+    const wachtwoord = document.getElementById("password").value;
+    if (wachtwoord === "dennis") {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("calculator").style.display = "block";
+    } else {
+      document.getElementById("error").textContent = "Onjuist wachtwoord!";
+    }
+  }
+
+  function berekenKosten() {
+    const gram = parseFloat(document.getElementById("gram").value);
+    const rolPrijs = parseFloat(document.getElementById("rolPrijs").value);
+    const rolGewicht = parseFloat(document.getElementById("rolGewicht").value);
+
+    if (isNaN(gram) || isNaN(rolPrijs) || isNaN(rolGewicht) || rolGewicht <= 0) {
+      document.getElementById("resultaat").textContent = "Vul alle velden correct in.";
+      return;
+    }
+
+    const kostenPerGram = rolPrijs / rolGewicht;
+    const totaleKosten = gram * kostenPerGram;
+    document.getElementById("resultaat").textContent =
+      `Kosten: €${totaleKosten.toFixed(2)} voor ${gram}g`;
+  }
+</script>
+
+</body>
+</html>
