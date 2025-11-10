@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Filament Rekenmachine</title>
   <style>
     body {
@@ -40,23 +40,26 @@
 </head>
 <body>
 
-<!-- <div id="login" class="container">
+<!--
+<div id="login" class="container">
   <h2>Voer wachtwoord in</h2>
-  <input type="password" id="password" placeholder="Wachtwoord">
+  <input type="password" id="password" placeholder="Wachtwoord" />
   <button onclick="checkPassword()">Inloggen</button>
   <p id="error" style="color:red;"></p>
-</div> -->
+</div>
+-->
 
-<div id="calculator" class="container" style="display:none;">
+<div id="calculator" class="container" style="display:block;">
   <h2>Filament Rekenmachine</h2>
-  <input type="number" id="gram" placeholder="Gram (g)">
-  <input type="number" id="rolPrijs" placeholder="Rol prijs (€)">
-  <input type="number" id="rolGewicht" placeholder="Gewicht rol (g)">
+  <input type="number" id="gram" placeholder="Gram (g)" />
+  <input type="number" id="rolPrijs" placeholder="Rol prijs (€)" />
+  <input type="number" id="rolGewicht" placeholder="Gewicht rol (g)" />
   <button onclick="berekenKosten()">Bereken</button>
   <h3 id="resultaat"></h3>
 </div>
 
 <script>
+  /*
   function checkPassword() {
     const wachtwoord = document.getElementById("password").value;
     if (wachtwoord === "dennis") {
@@ -66,6 +69,7 @@
       document.getElementById("error").textContent = "Onjuist wachtwoord!";
     }
   }
+  */
 
   function berekenKosten() {
     const gram = parseFloat(document.getElementById("gram").value);
@@ -86,3 +90,4 @@
 
 </body>
 </html>
+
